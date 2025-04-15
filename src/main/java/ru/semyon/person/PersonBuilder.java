@@ -17,9 +17,6 @@ public class PersonBuilder {
         if (this.surname == null) {
             throw new IllegalStateException("Not provided attribute surname");
         }
-        if (this.age <= 0) {
-            throw new IllegalArgumentException("Age cannot be lower 0");
-        }
 
         Person person = new Person(this.name, this.surname, this.age);
         person.setAddress(this.address);
@@ -35,6 +32,10 @@ public class PersonBuilder {
         return this;
     }
     public PersonBuilder setAge(int age) {
+        if (age <= 0) {
+            throw new IllegalArgumentException("Age cannot be lower 0");
+        }
+
         this.age = age;
         return this;
     }

@@ -1,5 +1,7 @@
 package ru.semyon.person;
 
+import java.util.OptionalInt;
+
 public class Person {
     protected final String name;
     protected final String surname;
@@ -19,8 +21,10 @@ public class Person {
         this.age = age;
     }
 
-    public ChildBuilder newChildBuilder() {
-        return new ChildBuilder(this.surname, this.address);
+    public PersonBuilder newChildBuilder() {
+        return new PersonBuilder()
+                .setAge(1)
+                .setSurname(this.surname);
     }
 
 
@@ -31,7 +35,9 @@ public class Person {
 
     public String getName() { return this.name; }
     public String getSurname() { return this.surname; }
-    public Integer getAge() { return this.age; }
+    public OptionalInt getAge() {
+        return OptionalInt.of(this.age);
+    }
     public String getAddress() { return this.address; }
 
     public void setAddress(String address) { this.address = address; }
