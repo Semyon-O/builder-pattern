@@ -31,14 +31,15 @@ public class PersonBuilder {
         this.surname = surname;
         return this;
     }
+
     public PersonBuilder setAge(int age) {
         if (age <= 0) {
             throw new IllegalArgumentException("Age cannot be lower 0");
         }
-
         this.age = age;
         return this;
     }
+
     public PersonBuilder setAddress(String address) {
         this.address = address;
         return this;

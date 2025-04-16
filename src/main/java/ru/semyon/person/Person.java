@@ -8,8 +8,6 @@ public class Person {
     protected Integer age = null;
     protected String address = null;
 
-
-
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -27,20 +25,26 @@ public class Person {
                 .setSurname(this.surname);
     }
 
-
     public boolean hasAge() {
         return this.age != null;
     }
+
     public boolean hasAddress() { return this.address != null; }
 
     public String getName() { return this.name; }
+
     public String getSurname() { return this.surname; }
+
     public OptionalInt getAge() {
+        if (this.age == null) {
+            return OptionalInt.empty();
+        }
         return OptionalInt.of(this.age);
     }
     public String getAddress() { return this.address; }
 
     public void setAddress(String address) { this.address = address; }
+
     public void happyBirthday() { this.age += 1; }
 
     @Override
